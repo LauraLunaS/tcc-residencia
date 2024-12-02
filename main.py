@@ -19,8 +19,8 @@ def calcular_coordenadas_aruco(imagem_path):
     img = cv2.imread(imagem_path)
 
     # Carregar parâmetros da câmera
-    camera_matrix = np.load('intrinsic_extrinsic/camera_matrix.npy')
-    dist_coeffs = np.load('intrinsic_extrinsic/dist_coefficients.npy')
+    camera_matrix = np.load('tcc-residencia/intrinsic_extrinsic/camera_matrix.npy')
+    dist_coeffs = np.load('tcc-residencia/intrinsic_extrinsic/dist_coefficients.npy')
 
     # Configurar o detector de ArUco
     aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_6X6_250)
@@ -47,12 +47,12 @@ def calcular_coordenadas_aruco(imagem_path):
     else:
         print("Nenhum ArUco detectado na imagem.")
         return None
-    
+
 
 def open_cam():
     # Carregar parâmetros da câmera
-    camera_matrix = np.load('intrinsic_extrinsic/camera_matrix.npy')
-    dist_coeffs = np.load('intrinsic_extrinsic/dist_coefficients.npy')
+    camera_matrix = np.load('tcc-residencia/intrinsic_extrinsic/camera_matrix.npy')
+    dist_coeffs = np.load('tcc-residencia/intrinsic_extrinsic/dist_coefficients.npy')
     cap = cv2.VideoCapture(1, cv2.CAP_DSHOW)
 
     img_counter = 0
@@ -248,7 +248,7 @@ def run_caminhos_de_corte():
 
 def main():   
     #run_caminhos_de_corte()
-    frame = open_cam()
+    open_cam()
     imagem_path = "output_images/opencv_frame_0000_with_aruco.png"  # Caminho para a imagem salva
     coordenadas_aruco = calcular_coordenadas_aruco(imagem_path)
 
